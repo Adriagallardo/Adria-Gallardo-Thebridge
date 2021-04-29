@@ -1,9 +1,7 @@
-from ClaseHumano import Humano
-
 
 class Orco:
 
-    def __init__(self, nombre, armadura, nivel, ataque):
+    def __init__(self, nombre, nivel, armadura, ataque):
         self.ojos = 2
         self.piernas = 2
         self.dientes = 56
@@ -15,10 +13,10 @@ class Orco:
 
 
 
-    def atacarr(Humano, self):
-        daño = self.ataque - Humano.armadura
-        humano_vida = Humano.salud - daño
-        print (f"Has atacado al enemigo por {daño} pts de daño, le queda {humano_vida} pts de vida!")
+    def atacar(self, Humano):
+        Humano.salud -= self.ataque - Humano.armadura
+        daño_h = self.ataque - Humano.armadura
+        print(f'{self.nombre} golpea por {daño_h} pts de daño! La salud del humano {Humano.nombre} es {Humano.salud}')
  
     def no_vivo(self):
         if self.salud <= 0:
@@ -30,4 +28,3 @@ class Orco:
         print(f"Nombre: {self.nombre}| ojos: {self.ojos}| dientes: {self.dientes}| piernas: {self.piernas}| armadura: {self.armadura}| ataque: {self.ataque}| salud: {self.salud}")
 
 
-zugzug = Orco(nombre = "Zugzug", armadura = 5, nivel = 80, ataque = 36)

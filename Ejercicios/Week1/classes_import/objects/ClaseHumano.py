@@ -1,6 +1,6 @@
 class Humano:
 
-    def __init__(self, nombre, armadura, nivel, ataque):
+    def __init__(self, nombre, nivel, armadura, ataque):
         self.ojos = 2
         self.piernas = 2
         self.dientes = 32
@@ -9,13 +9,11 @@ class Humano:
         self.nivel = nivel
         self.ataque = ataque
         self.salud = 100
-
-
-   
-    def atacarr(Humano, self):
-        daño = self.ataque - Humano.armadura
-        humano_vida = Humano.salud - daño
-        print (f"Has atacado al enemigo por {daño} pts de daño, le queda {orco_vida} pts de vida!")
+    
+    def atacar(self, Orco):
+        Orco.salud -= self.ataque - Orco.armadura
+        daño_o = self.ataque - Orco.armadura
+        print(f'{self.nombre} golpea por {daño_o} pts de daño! La salud del orco {Orco.nombre} es {Orco.salud}')
  
     def no_vivo(self):
         if self.salud <= 0:
@@ -26,5 +24,3 @@ class Humano:
     def show_stats(self):
         print(f"Nombre: {self.nombre} | ojos: {self.ojos} | dientes: {self.dientes} | piernas: {self.piernas} | armadura: {self.armadura} | ataque: {self.ataque} | salud: {self.salud}")
 
-
-adri = Humano(nombre = "Adri", armadura = 20, nivel = 100, ataque = 15)
