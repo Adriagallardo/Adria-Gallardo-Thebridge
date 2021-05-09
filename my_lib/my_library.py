@@ -1,41 +1,39 @@
-#Random string of number generator with max digits option
-    def num_variable(digitos):
-        """This function returns a random number in format string with length as parameter."""
-        import random
-        n = ""
-        for i in range(digitos):
-            n = n + str(random.randint(1,9))
-        return n
-
-
 import pandas as pd
 import numpy as np
+import json
+import matplotlib.pyplot as plt
+import random
+
+def num_variable(digitos):
+    """This function returns a random number in format string with length as parameter."""
+    n = ""
+    for i in range(digitos):
+        n = n + str(random.randint(1,9))
+    return n
 
 def open_file(path_file):
     """
-    DOCS # TODO
+    Read a json file
 
     Args:
         path_file ([str]): Path where is the file
     """
-    # TODO (@gabvaztor) This function must open a file and write something.
-    pass
-
-
-# This file represents your module.
-# Write the code...
-import pandas as pd
-import numpy as np
+    with open(path_file, 'r+') as outfile:
+        json_data_indented_readed = json.load(outfile)
+    return json_data_indented_readed
 
 def mean_visualization():
     """Draw the mean in a plot"""
+    #Inacabada
     return None
 
+def df_show_columns(dataframe):
+    "This function prints separately all the values in columns"
+    for columna in dataframe.columns.values:
+    print(df[columna].values)
+    print("----------")
+
 def show_list_of_elements(lista):
-    # TODO 
-    pass
-
-
-if __name__ == '__main__':
-    x = mean_visualization()
-    print(x)
+    """This function prints separately every element in list"""
+    for elem in lista:
+        print(elem)
