@@ -30,10 +30,21 @@ def mean_visualization():
 def df_show_columns(dataframe):
     "This function prints separately all the values in columns"
     for columna in dataframe.columns.values:
-    print(df[columna].values)
-    print("----------")
+        print(dataframe[columna].values)
+        print("----------")
 
 def show_list_of_elements(lista):
     """This function prints separately every element in list"""
     for elem in lista:
         print(elem)
+
+def cap_strings():
+    """This function capitalize whole strings in pandas"""
+    cap = lambda x:x.upper()
+    return cap
+
+def multiply(x, multiplicator):
+    """This function operates multiplication of first number per number selected"""
+    if isinstance(x,int) or isinstance (x, float):
+        return x * multiplicator
+    return x
