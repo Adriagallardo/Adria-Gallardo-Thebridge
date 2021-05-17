@@ -48,3 +48,18 @@ def multiply(x, multiplicator):
     if isinstance(x,int) or isinstance (x, float):
         return x * multiplicator
     return x
+
+def mining_add_column(list_args, column, df):
+    """This function will wrangle a nested dataframe where the column from where it nests is an url.
+    Example: If we find an url with lots of diferent values and columns inside a single dataframe value, 
+    this formula will add new columns for each parámetre we want to take"""
+    
+    list_stats = []
+
+    for i,column in enumerate(list_args):   
+        for ix in range(len(df)):
+            stats = requests.get(df[column][ix]).json()
+            list_stats.append(stats[column])
+        df[column] = list_stats[i*len(df):i*len(df)+len(df)]
+    
+    return df
