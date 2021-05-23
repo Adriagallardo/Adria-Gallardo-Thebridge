@@ -63,3 +63,7 @@ def mining_add_column(list_args, column, df):
         df[column] = list_stats[i*len(df):i*len(df)+len(df)]
     
     return df
+
+def returnNotMatches(a, b):
+    """This function will return the values not matching between two lists"""
+    return [[x for x in a if x not in b], [x for x in b if x not in a]]
