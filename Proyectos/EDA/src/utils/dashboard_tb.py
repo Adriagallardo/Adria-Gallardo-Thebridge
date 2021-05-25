@@ -1,0 +1,1 @@
+#Este archivo contiene las funciones asociadas al archivo app.py que se ejecuta en streamlit.
