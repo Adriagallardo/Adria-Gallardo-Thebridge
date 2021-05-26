@@ -136,3 +136,14 @@ def alcohol_column_intro(column):
         print("-G2: Second period grade (numeric: from 0 to 20)")
     elif column == "G3":
         print("-G3: Final grade (numeric: from 0 to 20, output target)")
+    
+def corr_onevalue_graphic(data, variable):
+    """Esta función un muestra un gráfico para un Series correspondiente a un mostreo de correlación
+    de una columna con las demás del dataframe. No estudia la negatividad o positividad de los valores
+    ya que trabaja con valores absolutos"""
+    plt.figure(figsize=(12,9))
+    current_palette = sns.color_palette("tab10")
+    data.abs().sort_values()[:-1].plot.bar(width=1,color=current_palette, rot=60)
+    plt.title(f"Correlación de las variables en estudio con {variable}")
+    plt.ylabel('Coeficiente de correlación en valor absoluto')
+    plt.xlabel('Variables en estudio')
