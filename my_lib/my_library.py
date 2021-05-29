@@ -3,6 +3,7 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 import random
+import requests
 
 def num_variable(digitos):
     """This function returns a random number in format string with length as parameter."""
@@ -11,7 +12,7 @@ def num_variable(digitos):
         n = n + str(random.randint(1,9))
     return n
 
-def open_file(path_file):
+def open_json(path_file):
     """
     Read a json file
 
@@ -19,8 +20,15 @@ def open_file(path_file):
         path_file ([str]): Path where is the file
     """
     with open(path_file, 'r+') as outfile:
-        json_data_indented_readed = json.load(outfile)
-    return json_data_indented_readed
+        json_readed = json.load(outfile)
+    return json_readed
+
+def create_json(path_file, data):
+    """This function creates a .json from any dataframe given, where path_file desired"""
+    json_written = data.to_json(orient="records")
+    with open(path_file, 'w') as created:  
+        created.write(json_written)
+
 
 def mean_visualization():
     """Draw the mean in a plot"""
