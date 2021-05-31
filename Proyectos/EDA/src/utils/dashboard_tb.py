@@ -21,6 +21,8 @@ def browse_json_todf():
     """Esta función genera un navegador que permite seleccionar un archivo json en el equipo
      para mostrarlo como dataframe en pantalla"""
     slider_json = st.sidebar.file_uploader("Selecciona un JSON", type=['json'])
+    st.write('Selecciona en el buscador de la izquierda un archivo json\
+            que quieras cargar')
     if type(slider_json) != type(None):
         df_slider = load_json_df(slider_json)
         st.table(df_slider)

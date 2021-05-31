@@ -1,4 +1,5 @@
 import pymysql
+from sqlalchemy import create_engine
 
 class MySQL:
 
@@ -75,3 +76,11 @@ class MySQL:
 
         sql = sql.replace("\n", "").replace("            ", " ")
         return sql
+
+def connect_mysql(IP_DNS="54.87.229.244", USER="21755015m", PASSWORD="adriagallardo96", BD_NAME="21755015m_ds_april_2021_db", PORT=25001):
+    
+    mysql_db = MySQL(IP_DNS=IP_DNS, USER=USER, PASSWORD=PASSWORD, BD_NAME=BD_NAME, PORT=PORT)
+    db = mysql_db.connect()
+    db_connection_str = mysql_db.SQL_ALCHEMY
+    db_connection = create_engine(db_connection_str)
+    return db_connection

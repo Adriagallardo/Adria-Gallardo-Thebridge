@@ -166,3 +166,10 @@ def multi_subplot(data):
     sns.countplot(data=data, x="internet", hue ="sex", ax=ax[2,0])
     sns.countplot(data=data, x="schoolsup", hue ="sex", ax=ax[2,1])
     sns.countplot(data=data, x="nursery", hue ="sex", ax=ax[2,2])
+
+def pie_chart(data):
+    """Esta función configura un 'piechart' para el Series que le pasamos"""
+    plt.figure(1, figsize=(24,12))
+    labels = data.keys()
+    a = plt.pie(data, labels=labels, autopct='%.0f%%', radius=0.7, textprops= {"weight":"bold"})
+    return a

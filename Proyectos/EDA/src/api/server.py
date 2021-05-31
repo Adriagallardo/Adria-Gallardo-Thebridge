@@ -2,6 +2,11 @@ from flask import Flask, request, render_template
 import os, sys
 import argparse
 
+#Para correr este archivo es necesario abrir el cmd y aplicar la ruta a este archivo.
+#A continuación se ejecuta el comando server.py -x 8642 y cogemos la ruta http que se indica.
+#Seguidamente seguimos las instrucciones que indica la página. La contraseña es M21755015
+
+
 # ---------- Append de ruta ----------
 """Con este comando de 5 líneas añadimos al archivo la ruta a la carpeta src, que contiene utils.
 que nos valdrá para importar las funciones que utilizaremos para generar la API."""
