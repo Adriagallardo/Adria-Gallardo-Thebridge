@@ -1,34 +1,12 @@
 #Este archivo contiene las funciones de visualización (pandas, matplolib y seaborn) que elaboramos en el proyecto.
-
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def read_my_csv(file_path):
-    """Esta función lee el un archivo .csv introduciendo su ruta"""
-    data = pd.read_csv(file_path)
-    return data
-
 def sns_gstyle():
     """Esta función cambia los gráficos de seaborn que vienen por defecto"""
     sns.set(style="ticks")
-
-#def alcohol_columns_intro():
-#    ""Esta función introduce al usuario al significado de las columnas así
-#    como al valor que nos otorgan, de los datasets encontrados"""
-#    print("-Escuela: escuela del estudiante(binario: 'GP'- Gabriel Pereira o 'MS'- Mousinho da Silveira)")
-#    print("-Sexo: sexo del estudiante (binario: 'F'- femenino o 'M'- masculino)")
-#    print("-Edad: edad del estudiante (numérico: del 15 al 22)")
-#    print("-Dirección: tipo de zona de residencia (binario: 'U'- urbano o 'R'- rural)")
-#    print("-Tamaño_familia: tamaño de la familia (binario: 'LE3'- menor o igual a 3 o 'GT3'- mayor que 3)")
-#    print("-Par_Estado: estado de relación de padres (binario: 'T'- viven juntos o 'A'- viven separados) ")
-#    print("-M_edu: nivel educativo de la madre (numérico: del 0 siendo este el menor (sin estudios) al 4 (con estudios superiores a secundaria)")
-#    print("-P_edu: nivel educativo del padre (numérico: del 0 siendo este el menor (sin estudios) al 4 (con estudios superiores a secundaria)")
-#    print("-M_trab: trabajo de la madre (nominal: 'educación', 'salud', servicio 'civil', 'en_casa' o otro)")
-#    print("-P_trab: trabajo del padre (nominal: 'educación', 'salud', servicio 'civil', 'en_casa' o otro)")
-#    print("-Razon: razon para escoger escuela (nominal: cerca de 'casa', 'reputación' de escuela, preferencias de 'curso', otros )")
-#    print("-Guardian")
 
 def alcohol_columns_intro():
     """Esta función introduce al usuario al significado de las columnas así
@@ -138,7 +116,7 @@ def alcohol_column_intro(column):
         print("-G3: Final grade (numeric: from 0 to 20, output target)")
     
 def corr_onevalue_graphic(data, variable):
-    """Esta función un muestra un gráfico para un Series correspondiente a un mostreo de correlación
+    """Esta función muestra un gráfico para un Series correspondiente a un mostreo de correlación
     de una columna con las demás del dataframe. No estudia la negatividad o positividad de los valores
     ya que trabaja con valores absolutos"""
     plt.figure(figsize=(12,9))
@@ -147,3 +125,44 @@ def corr_onevalue_graphic(data, variable):
     plt.title(f"Correlación de las variables en estudio con {variable}")
     plt.ylabel('Coeficiente de correlación en valor absoluto')
     plt.xlabel('Variables en estudio')
+
+def corr_onevalue_graphic_n(data, variable):
+    """Esta función muestra un gráfico para un Series correspondiente a un mostreo de correlación
+    de una columna con las demás del dataframe"""
+    plt.figure(figsize=(12,9))
+    current_palette = sns.color_palette("tab10")
+    data.sort_values()[:-1].plot.bar(width=1,color=current_palette, rot=60)
+    plt.title(f"Correlación de las variables en estudio con {variable}")
+    plt.ylabel('Coeficiente de correlación en valor absoluto')
+    plt.xlabel('Variables en estudio')
+
+def doble_barplot(x, y1, y2, hue, figsize, data):
+    """Esta función configura dos gráficos de barras con un mismo valor de x con hue"""
+    fig, ax = plt.subplots(1,2, figsize=figsize)
+    sns.barplot(data=data, x=x, y=y1, hue=hue, palette="husl", ax=ax[0])
+    sns.barplot(data=data, x=x, y=y2, hue=hue, palette="husl", ax=ax[1])
+
+def line_count(x1, x2, y, hue, figsize, data):
+    """Esta función configura una lineplot y un countplot con mismo hue para hacer una comparativa"""
+    fig, ax = plt.subplots(1,2, figsize=figsize)
+    sns.lineplot(data=data, x=x1, y=y, hue=hue, ax=ax[0])
+    sns.countplot(data=data, x=x2, hue =hue, ax=ax[1])
+
+
+
+def multi_subplot(data):
+    """Esta función está adaptada únicamente al proyecto por su extensión. Es decir, llamará directamente
+    a las variables que ya se encuentran dentro del archivo main. Esta función se utiliza para mostrar
+    una gran cantidad de subplots que reflejan valores del DataFrame limpio."""
+
+    fig, ax = plt.subplots(3,3, figsize=(22,11))
+    sns.set(palette="husl")
+    sns.barplot(data=data, x="age", y="studytime", hue="sex", ax=ax[0,0])
+    sns.barplot(data=data, x="age", y="goout", hue="sex", ax=ax[0,1])
+    sns.barplot(data=data, x="age", y="absences", hue="sex", ax=ax[0,2])
+    sns.countplot(data=data, x="paid", hue ="sex", ax=ax[1,0])
+    sns.countplot(data=data, x="activities", hue ="sex", ax=ax[1,1])
+    sns.countplot(data=data, x="romantic", hue ="sex", ax=ax[1,2])
+    sns.countplot(data=data, x="internet", hue ="sex", ax=ax[2,0])
+    sns.countplot(data=data, x="schoolsup", hue ="sex", ax=ax[2,1])
+    sns.countplot(data=data, x="nursery", hue ="sex", ax=ax[2,2])

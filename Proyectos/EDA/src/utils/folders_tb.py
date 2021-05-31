@@ -1,5 +1,4 @@
 #Este archivo contiene las funciones del proyecto utilizadas para abrir, crear, leer y escribir archivos que se llevan a cabo en el proyecto.
-
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -22,3 +21,4 @@ def read_json(path_file):
     with open(path_file, 'r+') as outfile:
         json_readed = json.load(outfile)
     return json_readed
+

@@ -1,5 +1,4 @@
 #Este archivo tiene las funciones asociadas al data wrangling que elaboramos en el proyecto.
-
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -68,7 +67,7 @@ def bin_obj_to_int(data):
     for col in data:
         """Esta función cambia los valores binarios de tipo objeto a valores binarios de tipo int en un dataframe"""
         if len(data[col].unique()) == 2:
-            change = {data[col].unique()[0]: 0, data[col].unique()[1]: 1}
+            change = {data[col].unique()[0]: 1, data[col].unique()[1]: 0}
             data[col] = [change[item] for item in data[col]]
         else:
             pass
@@ -110,3 +109,15 @@ def comp_multiple_data(data, column, mask_list):
         data_mult_comp = data_mult_comp.join(semi_data)
 
     return data_mult_comp
+
+def get_unique_counts(data):
+    """Esta función recoge un conteo de los valores únicos que hay para cada y lo retorna
+    como un Series"""
+
+    list_uniques = []
+    for col in data:
+        x = len(data[col].unique())
+        list_uniques.append(x)
+        
+    ser = pd.Series(list_uniques, index=data.columns)
+    return ser
