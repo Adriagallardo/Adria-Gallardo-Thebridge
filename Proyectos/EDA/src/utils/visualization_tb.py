@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import squarify as sq
 
 def sns_gstyle():
     """Esta función cambia los gráficos de seaborn que vienen por defecto"""
@@ -115,26 +116,27 @@ def alcohol_column_intro(column):
     elif column == "G3":
         print("-G3: Final grade (numeric: from 0 to 20, output target)")
     
-def corr_onevalue_graphic(data, variable):
+def corr_onevalue_graphic_abs(data, variable):
     """Esta función muestra un gráfico para un Series correspondiente a un mostreo de correlación
     de una columna con las demás del dataframe. No estudia la negatividad o positividad de los valores
     ya que trabaja con valores absolutos"""
-    plt.figure(figsize=(12,9))
-    current_palette = sns.color_palette("tab10")
-    data.abs().sort_values()[:-1].plot.bar(width=1,color=current_palette, rot=60)
+    current_palette = sns.color_palette("crest")
+    plt.figure(figsize=(18,9))
+    sq.plot(label=data.keys(), sizes=data.sort_values()[:-1].abs().values, color=current_palette, text_kwargs={'fontsize':13,'color':'white'})
     plt.title(f"Correlación de las variables en estudio con {variable}")
-    plt.ylabel('Coeficiente de correlación en valor absoluto')
-    plt.xlabel('Variables en estudio')
+    plt.axis('off')
 
 def corr_onevalue_graphic_n(data, variable):
     """Esta función muestra un gráfico para un Series correspondiente a un mostreo de correlación
     de una columna con las demás del dataframe"""
     plt.figure(figsize=(12,9))
-    current_palette = sns.color_palette("tab10")
+    current_palette = sns.color_palette("Greens")
     data.sort_values()[:-1].plot.bar(width=1,color=current_palette, rot=60)
     plt.title(f"Correlación de las variables en estudio con {variable}")
     plt.ylabel('Coeficiente de correlación en valor absoluto')
     plt.xlabel('Variables en estudio')
+    
+
 
 def doble_barplot(x, y1, y2, hue, figsize, data):
     """Esta función configura dos gráficos de barras con un mismo valor de x con hue"""

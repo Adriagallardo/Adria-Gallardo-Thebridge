@@ -22,3 +22,7 @@ def read_json(path_file):
         json_readed = json.load(outfile)
     return json_readed
 
+def create_json_from_dict(path_file, dict):
+    """Esta función crea un archivo json en la ruta que pongamos, sobre un diccionario escogido"""
+    with open(path_file, 'w') as created:  
+        json.dump(dict, fp=created, indent = 4)
