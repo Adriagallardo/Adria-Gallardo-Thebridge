@@ -1,4 +1,4 @@
-[#Proyecto EDA: Estudio de causas promotoras del consumo de alcohol en estudiantes de secundaria](src/main.ipynb)
+# [Proyecto EDA: Estudio de causas promotoras del consumo de alcohol en estudiantes de secundaria](src/main.ipynb)
 
 ----------
 
