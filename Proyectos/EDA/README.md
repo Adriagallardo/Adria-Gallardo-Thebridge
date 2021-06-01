@@ -4,7 +4,7 @@
 
 ----------
 
-## Información de Contacto
+### Información de Contacto
 
 #### linkedin: https://www.linkedin.com/in/adri%C3%A0-gallardo-vi%C3%B1as-a25834209/
 #### gmail: adriagallardo96@gmail.com
