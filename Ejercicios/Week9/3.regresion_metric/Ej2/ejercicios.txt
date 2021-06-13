@@ -1,0 +1,2 @@
+https://www.kaggle.com/prashant111/svm-classifier-tutorial
+https://medium.com/pursuitnotes/support-vector-regression-in-6-steps-with-python-c4569acd062d
