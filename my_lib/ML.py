@@ -1,4 +1,5 @@
 from sklearn import svm
+import numpy as np
 
 def data3_params(X, y, X_val, y_val):
     """
@@ -39,3 +40,7 @@ def data3_params(X, y, X_val, y_val):
                 gamma_pick = gamma
 
     return C_pick, gamma_pick
+
+def mean_absolute_error(y_test, y_pred): 
+    """Returns MAE manually constructed"""
+    return np.mean(np.abs((y_test - y_pred)))
