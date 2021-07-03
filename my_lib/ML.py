@@ -44,3 +44,11 @@ def data3_params(X, y, X_val, y_val):
 def mean_absolute_error(y_test, y_pred): 
     """Returns MAE manually constructed"""
     return np.mean(np.abs((y_test - y_pred)))
+
+def convertToMatrix(data, step):
+    X, Y =[], []
+    for i in range(len(data)-step):
+        d=i+step  
+        X.append(data[i:d,])
+        Y.append(data[d,])
+    return np.array(X), np.array(Y)
